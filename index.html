@@ -540,6 +540,431 @@
       .model{transition:none}
       .cta,.cta__arrow,.pager button{transition:none}
     }
+
+    /* ===== Benefits / Gemarisのメリット ===== */
+    .benefits{
+      position:relative;
+      overflow:hidden;
+      padding:116px 24px 126px;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 92% 10%, rgba(255,22,143,.10), transparent 24%),
+        radial-gradient(circle at 5% 88%, rgba(17,17,17,.035), transparent 24%),
+        linear-gradient(180deg,#f3f1ed 0%,#fbfaf8 18%,#f7f5f2 100%);
+      border-top:1px solid rgba(17,17,17,.08);
+    }
+    .benefits::before{
+      content:"BENEFITS";
+      position:absolute;
+      right:-.03em;
+      top:.08em;
+      font:900 clamp(5rem,15vw,13rem)/1 "Inter",sans-serif;
+      letter-spacing:-.07em;
+      color:rgba(17,17,17,.035);
+      pointer-events:none;
+      user-select:none;
+    }
+    .benefits::after{
+      content:"";
+      position:absolute;
+      left:0;right:0;top:0;height:5px;
+      background:linear-gradient(90deg,#111 0 30%,var(--pink) 30% 52%,transparent 52%);
+    }
+    .benefits__inner{width:min(1180px,100%);margin:0 auto;position:relative;z-index:1}
+    .section-heading{max-width:780px;margin-bottom:58px}
+    .section-kicker{
+      display:flex;align-items:center;gap:10px;
+      margin:0 0 15px;
+      font:900 11px/1 "Inter",sans-serif;
+      letter-spacing:.19em;color:var(--pink);
+    }
+    .section-kicker::before{content:"";width:32px;height:3px;background:var(--pink)}
+    .section-heading h2{
+      margin:0;
+      font-size:clamp(2.4rem,5.3vw,4.9rem);
+      line-height:1.03;
+      letter-spacing:-.055em;
+      font-weight:900;
+    }
+    .section-heading h2 .pink{color:var(--pink)}
+    .section-heading p{
+      margin:20px 0 0;
+      font-size:1rem;line-height:1.85;font-weight:700;color:#66666d;
+    }
+
+    .benefits-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+    .benefit-card{
+      position:relative;
+      min-height:530px;
+      padding:40px;
+      border:1px solid rgba(17,17,17,.08);
+      border-radius:25px;
+      background:rgba(255,255,255,.86);
+      box-shadow:0 20px 56px rgba(13,13,17,.055);
+      overflow:hidden;
+      isolation:isolate;
+    }
+    .benefit-card::before{
+      content:"";position:absolute;z-index:-1;width:190px;height:190px;right:-85px;top:-82px;border-radius:50%;
+      background:var(--pink);opacity:.055;
+    }
+    .benefit-number{
+      position:absolute;right:24px;top:14px;
+      font:900 5.1rem/.9 "Inter",sans-serif;
+      letter-spacing:-.08em;color:rgba(17,17,17,.05);pointer-events:none;
+    }
+    .benefit-tag{
+      display:inline-block;margin-bottom:17px;
+      font:900 .7rem/1 "Inter",sans-serif;
+      letter-spacing:.17em;color:var(--pink);
+    }
+    .benefit-card h3{
+      position:relative;z-index:1;
+      margin:0 0 30px;
+      font-size:clamp(1.55rem,2.7vw,2.15rem);
+      line-height:1.28;letter-spacing:-.035em;font-weight:900;
+    }
+    .benefit-note{margin:24px 0 0;font-size:.87rem;line-height:1.85;color:#73737b;font-weight:600}
+
+    /* 01 還元率 */
+    .rate-table{margin-top:32px;border-top:1px solid rgba(17,17,17,.09)}
+    .rate-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid rgba(17,17,17,.09)}
+    .rate-income{font-size:.92rem;font-weight:800;color:#33333a}
+    .rate-row strong{font:900 2rem/.95 "Inter",sans-serif;letter-spacing:-.05em}
+    .rate-row.is-max{padding:20px 0}
+    .rate-row.is-max strong{font-size:clamp(3rem,5vw,4.5rem);color:var(--pink)}
+
+    /* 02 機材 */
+    .equipment-box{display:flex;align-items:stretch;justify-content:center;gap:11px;margin:44px 0 32px}
+    .equipment-name{
+      flex:1;display:grid;place-items:center;min-height:94px;padding:16px 14px;text-align:center;
+      border:2px solid #111;border-radius:15px;background:#fff;font-weight:900;font-size:1rem;
+    }
+    .equipment-plus{align-self:center;font:900 2rem/1 "Inter",sans-serif;color:var(--pink)}
+    .big-emphasis{text-align:center;padding:22px 16px;border-top:1px solid rgba(17,17,17,.08);border-bottom:1px solid rgba(17,17,17,.08)}
+    .big-emphasis strong{display:block;font:900 clamp(3rem,5.6vw,5.2rem)/.95 "Inter",sans-serif;color:var(--pink);letter-spacing:-.06em}
+    .big-emphasis span{display:block;margin-top:8px;font-size:1.2rem;font-weight:900}
+
+    /* 03 デビュー */
+    .campaign-list{margin-top:6px;border-top:1px solid rgba(17,17,17,.09)}
+    .campaign-row{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;padding:15px 0;border-bottom:1px solid rgba(17,17,17,.09)}
+    .campaign-row>div{display:flex;flex-direction:column;gap:3px;min-width:0}
+    .campaign-title{font-weight:900;font-size:.95rem}
+    .campaign-row small{font-size:.73rem;color:#7a7a81;font-weight:600}
+    .campaign-row strong{white-space:nowrap;font:900 1.45rem/1 "Inter",sans-serif;letter-spacing:-.03em}
+    .campaign-total{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;padding:24px 0 10px}
+    .campaign-total span{font:900 .72rem/1 "Inter",sans-serif;letter-spacing:.18em}
+    .campaign-total strong{font-size:clamp(2.15rem,4vw,3.45rem);line-height:1;color:var(--pink);letter-spacing:-.05em}
+    .campaign-double{margin-top:18px;padding:20px;border-radius:17px;background:#111;color:#fff;text-align:center;box-shadow:0 12px 32px rgba(17,17,17,.16)}
+    .campaign-double span,.campaign-double strong{display:block}
+    .campaign-double span{font-size:.84rem;font-weight:800;color:#dedee2}
+    .campaign-double strong{margin-top:3px;font-size:1.2rem}
+    .campaign-max{margin-top:6px;font:900 clamp(2.6rem,5vw,4.2rem)/.95 "Inter",sans-serif;letter-spacing:-.06em;color:#ff38a1}
+    .u18-bonus{margin-top:13px;text-align:center;font-size:.84rem;font-weight:800;color:#4d4d54}
+    .u18-bonus strong{font-size:1.25rem;color:var(--pink)}
+
+    /* 04 プレミア */
+    .benefit-premium{
+      color:#fff;
+      background:
+        radial-gradient(circle at 86% 8%,rgba(255,22,143,.32),transparent 27%),
+        linear-gradient(145deg,#111114 0%,#09090b 62%,#171218 100%);
+      border-color:rgba(255,255,255,.09);
+      box-shadow:0 24px 70px rgba(8,8,12,.19);
+    }
+    .benefit-premium::before{background:var(--pink);opacity:.15}
+    .benefit-premium .benefit-number{color:rgba(255,255,255,.065)}
+    .premium-target{margin:32px 0 26px;font-size:.98rem;line-height:1.8;color:#d0d0d5}
+    .premium-target strong{font-size:1.24rem;color:#ff53ad}
+    .premium-feature{padding:21px;border:1px solid rgba(255,255,255,.14);border-radius:15px;background:rgba(255,255,255,.045)}
+    .premium-feature span{display:block;margin-bottom:6px;font:800 .7rem/1 "Inter",sans-serif;letter-spacing:.14em;color:#ff53ad}
+    .premium-feature strong{font-size:clamp(1.25rem,2.2vw,1.9rem);line-height:1.45}
+    .premium-feature .premium-max{display:block;margin-top:5px;font:900 clamp(2.2rem,4.3vw,3.8rem)/.95 "Inter",sans-serif;color:#ff53ad;letter-spacing:-.06em}
+    .premium-plus{margin:12px 0;text-align:center;font:900 2rem/1 "Inter",sans-serif;color:var(--pink)}
+
+    /* CTA */
+    .benefits-cta{margin-top:68px;padding:48px 22px 10px;text-align:center}
+    .benefits-cta__question{margin:0;font-size:clamp(1.8rem,4vw,3rem);line-height:1.2;font-weight:900;letter-spacing:-.045em}
+    .benefits-cta__sub{margin:10px 0 24px;font-size:.94rem;font-weight:700;color:#74747b}
+    .benefits-line-btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:13px;
+      width:min(430px,100%);min-height:64px;padding:16px 24px;
+      border-radius:15px;background:#111;color:#fff;text-decoration:none;font-weight:900;
+      box-shadow:7px 7px 0 var(--pink),0 14px 34px rgba(17,17,17,.12);
+      transition:transform .22s ease,box-shadow .22s ease;
+    }
+    .benefits-line-btn::before{content:"LINE";display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#06c755;color:#fff;font:900 9px/1 "Inter",sans-serif}
+    .benefits-line-btn:hover,.benefits-line-btn:focus-visible{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--pink),0 10px 24px rgba(17,17,17,.15);outline:none}
+    .benefits-cta small{display:block;margin-top:14px;color:#77777e;font-size:.75rem;font-weight:800}
+
+    /* scroll reveal trigger: 親要素自体は隠さず、文字だけを動かす */
+    .scroll-reveal{opacity:1;transform:none}
+
+    /* 文字単位のアニメーション */
+    .text-reveal{
+      opacity:0;
+      transform:translateY(16px);
+      filter:blur(4px);
+      transition:
+        opacity .64s cubic-bezier(.2,.7,.25,1),
+        transform .64s cubic-bezier(.2,.7,.25,1),
+        filter .64s ease;
+      transition-delay:var(--text-delay,0ms);
+      will-change:opacity,transform,filter;
+    }
+    .text-reveal.is-visible{opacity:1;transform:none;filter:blur(0)}
+    .text-pop{
+      opacity:0;
+      transform:translateY(12px) scale(.96);
+      transition:opacity .58s ease,transform .72s cubic-bezier(.16,.8,.24,1);
+      transition-delay:var(--text-delay,0ms);
+      will-change:opacity,transform;
+    }
+    .text-pop.is-visible{opacity:1;transform:none}
+
+    @media(max-width:768px){
+      .benefits{padding:82px 18px 96px}
+      .benefits::before{top:.25em;font-size:27vw}
+      .section-heading{margin-bottom:42px}
+      .section-kicker{font-size:10px;letter-spacing:.16em}
+      .section-heading h2{
+        font-size:clamp(2rem,9.4vw,2.85rem);
+        line-height:1.13;
+        letter-spacing:-.035em;
+      }
+      .section-heading p{font-size:.93rem;line-height:1.85;margin-top:17px;letter-spacing:.01em}
+      .benefits-grid{grid-template-columns:1fr;gap:18px}
+      .benefit-card{min-height:auto;padding:31px 22px 32px;border-radius:20px}
+      .benefit-number{right:14px;top:12px;font-size:3.75rem}
+      .benefit-tag{font-size:.67rem;letter-spacing:.14em;margin-bottom:16px}
+      .benefit-card h3{
+        margin-bottom:25px;
+        font-size:clamp(1.35rem,5.8vw,1.72rem);
+        line-height:1.45;
+        letter-spacing:-.018em;
+      }
+      .benefit-note{font-size:.9rem;line-height:1.9;letter-spacing:.01em}
+      .rate-row{padding:17px 0}
+      .rate-income{font-size:.9rem;line-height:1.5;letter-spacing:.01em}
+      .rate-row strong{font-size:1.85rem}
+      .rate-row.is-max strong{font-size:2.65rem}
+      .equipment-box{margin:33px 0 27px;gap:9px}
+      .equipment-name{min-height:80px;padding:14px 10px;font-size:.86rem;line-height:1.45}
+      .equipment-plus{font-size:1.4rem}
+      .big-emphasis{padding:23px 12px}
+      .big-emphasis strong{font-size:3rem}
+      .big-emphasis span{font-size:1.08rem;line-height:1.5}
+      .campaign-row{gap:12px;padding:17px 0}
+      .campaign-title{font-size:.91rem;line-height:1.45}
+      .campaign-row small{font-size:.73rem;line-height:1.5}
+      .campaign-row strong{font-size:1.14rem}
+      .campaign-total{display:block;padding-top:23px}
+      .campaign-total strong{display:block;margin-top:8px;font-size:2.4rem;line-height:1.08}
+      .campaign-double{padding:22px 16px}
+      .campaign-double strong{font-size:1.14rem;line-height:1.5}
+      .campaign-max{font-size:2.72rem;line-height:1.05}
+      .u18-bonus{font-size:.88rem;line-height:1.6}
+      .premium-target{font-size:.94rem;line-height:1.9}
+      .premium-target strong{font-size:1.15rem}
+      .premium-feature{padding:20px 17px}
+      .premium-feature strong{font-size:1.18rem;line-height:1.6}
+      .premium-feature .premium-max{font-size:2.45rem;line-height:1.05}
+      .benefits-cta{margin-top:44px;padding:31px 0 4px}
+      .benefits-cta__question{font-size:1.6rem;line-height:1.42;letter-spacing:-.025em}
+      .benefits-cta__sub{font-size:.92rem;line-height:1.7}
+      .benefits-line-btn{min-height:60px;box-shadow:6px 6px 0 var(--pink);font-size:.96rem}
+    }
+
+    @media(max-width:380px){
+      .section-heading h2{font-size:1.92rem}
+      .benefit-card{padding-left:20px;padding-right:20px}
+      .benefit-card h3{font-size:1.3rem}
+      .rate-income{font-size:.84rem}
+      .rate-row strong{font-size:1.72rem}
+      .rate-row.is-max strong{font-size:2.42rem}
+      .campaign-max{font-size:2.5rem}
+    }
+
+    /* このLPではユーザー指定により文字アニメーションを常時有効化 */
+
+
+    /* ===== Reward Simulation ===== */
+    .reward-sim{
+      position:relative;
+      padding:104px 24px 112px;
+      background:linear-gradient(180deg,#f3f0eb 0%,#fff 42%,#f7f5f1 100%);
+      color:#111;
+      overflow:hidden;
+      isolation:isolate;
+    }
+    .reward-sim::before{
+      content:"REWARD";
+      position:absolute;
+      right:-.05em;
+      top:.03em;
+      z-index:-1;
+      font:900 clamp(5rem,14vw,11rem)/1 "Inter",sans-serif;
+      letter-spacing:-.07em;
+      color:rgba(17,17,17,.035);
+      pointer-events:none;
+      white-space:nowrap;
+    }
+    .reward-sim::after{
+      content:"";
+      position:absolute;
+      width:400px;height:400px;
+      left:-180px;bottom:20px;
+      z-index:-1;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(255,22,143,.10),transparent 68%);
+      pointer-events:none;
+    }
+    .reward-sim__inner{width:min(1080px,100%);margin:0 auto;position:relative;z-index:1}
+    .reward-sim__head{max-width:720px;margin-bottom:42px}
+    .reward-sim__kicker{margin:0 0 12px;font:900 .72rem/1 "Inter",sans-serif;letter-spacing:.18em;color:var(--pink)}
+    .reward-sim__head h2{margin:0;font-size:clamp(2.3rem,5vw,4.6rem);line-height:1.08;letter-spacing:-.045em;font-weight:900}
+    .reward-sim__head h2 span{color:var(--pink)}
+    .reward-sim__lead{margin:18px 0 0;color:#55555d;font-size:.98rem;line-height:1.8;font-weight:700}
+    .reward-sim__meta{margin:10px 0 0;color:#888890;font-size:.72rem;line-height:1.7;font-weight:700}
+
+    .reward-highlights{
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      gap:12px;
+      margin-bottom:20px;
+    }
+    .reward-highlight{
+      position:relative;
+      min-width:0;
+      padding:22px 18px 20px;
+      border:1px solid rgba(17,17,17,.09);
+      border-radius:18px;
+      background:rgba(255,255,255,.86);
+      box-shadow:0 12px 34px rgba(17,17,17,.055);
+    }
+    .reward-highlight__rank{display:block;font:900 .72rem/1 "Inter",sans-serif;letter-spacing:.12em;color:#777780}
+    .reward-highlight__amount{display:block;margin-top:10px;font:900 clamp(1.25rem,2.1vw,1.95rem)/1.08 "Inter",sans-serif;letter-spacing:-.045em;color:#111;white-space:normal}
+    .reward-highlight__amount strong{color:var(--pink);font:inherit}
+    .reward-highlight__label{display:block;margin-top:8px;font-size:.7rem;font-weight:800;color:#888890}
+
+    .reward-expand{
+      margin:18px 0 0;
+      border:1px solid rgba(17,17,17,.10);
+      border-radius:20px;
+      background:#fff;
+      box-shadow:0 16px 44px rgba(17,17,17,.06);
+      overflow:hidden;
+    }
+    .reward-expand>summary{
+      list-style:none;
+      cursor:pointer;
+      min-height:64px;
+      padding:18px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      font-weight:900;
+      font-size:.96rem;
+      text-align:center;
+      color:#111;
+      background:#fff;
+    }
+    .reward-expand>summary::-webkit-details-marker{display:none}
+    .reward-expand>summary::after{content:"＋";color:var(--pink);font:900 1.25rem/1 "Inter",sans-serif;transition:transform .22s ease}
+    .reward-expand[open]>summary{border-bottom:1px solid rgba(17,17,17,.08)}
+    .reward-expand[open]>summary::after{transform:rotate(45deg)}
+    .reward-expand__body{padding:22px}
+
+    .reward-plan-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 14px}
+    .reward-plan-tab{
+      appearance:none;border:1px solid rgba(17,17,17,.12);border-radius:13px;
+      padding:15px 16px;background:#f5f3ef;color:#66666d;
+      font:900 .88rem/1.2 "Noto Sans JP",sans-serif;cursor:pointer;transition:.2s ease;
+    }
+    .reward-plan-tab.is-active{background:#111;color:#fff;border-color:#111;box-shadow:none}
+    .reward-plan-tab:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+    .reward-panel{display:none}
+    .reward-panel.is-active{display:block}
+    .reward-rate-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:10px;margin-bottom:12px;border-radius:15px;background:#f7f5f2}
+    .reward-rate-chip{padding:12px 8px;border-radius:11px;background:#fff;text-align:center;border:1px solid rgba(17,17,17,.06)}
+    .reward-rate-chip span{display:block;font-size:.66rem;font-weight:800;color:#85858d}
+    .reward-rate-chip strong{display:block;margin-top:5px;font:900 1.12rem/1 "Inter",sans-serif;color:#111}
+    .reward-rate-chip:last-child{background:rgba(255,22,143,.06);border-color:rgba(255,22,143,.20)}
+    .reward-rate-chip:last-child strong{color:var(--pink)}
+    .reward-table-wrap{overflow-x:hidden;border:1px solid rgba(17,17,17,.10);border-radius:15px;background:#fff}
+    .reward-table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:0}
+    .reward-table th,.reward-table td{padding:13px 10px;border-bottom:1px solid rgba(17,17,17,.07);text-align:right;white-space:nowrap}
+    .reward-table th{font-size:.70rem;letter-spacing:.06em;color:#777780;background:#f7f5f2;font-weight:900}
+    .reward-table th:first-child,.reward-table td:first-child{text-align:left}
+    .reward-table td{font-size:.86rem;font-weight:700;color:#55555d}
+    .reward-table td.rank{font:900 .84rem/1 "Inter",sans-serif;color:#111;letter-spacing:.06em}
+    .reward-table td.reward{font:900 .94rem/1 "Inter",sans-serif;color:#111}
+    .reward-table tr.is-key td{background:rgba(255,22,143,.035)}
+    .reward-table tr.is-key td.reward{color:var(--pink)}
+    .reward-table tr:last-child td{border-bottom:0}
+    .reward-table-note{margin:10px 4px 0;color:#888890;font-size:.70rem;line-height:1.65;font-weight:700}
+    .reward-details{margin-top:14px;border:1px solid rgba(17,17,17,.09);border-radius:15px;background:#faf9f7;overflow:hidden}
+    .reward-details summary{list-style:none;cursor:pointer;padding:17px 18px;font-weight:900;font-size:.84rem;display:flex;justify-content:space-between;align-items:center;gap:16px;color:#333}
+    .reward-details summary::-webkit-details-marker{display:none}
+    .reward-details summary::after{content:"＋";color:var(--pink);font:900 1.1rem/1 "Inter",sans-serif;transition:transform .2s ease}
+    .reward-details[open] summary::after{transform:rotate(45deg)}
+    .reward-details__body{padding:0 14px 14px}
+    .keep-note{margin:12px 4px 0;color:#888890;font-size:.70rem;line-height:1.7;font-weight:700}
+    .reward-sim__cta{margin-top:42px;text-align:center}
+    .reward-sim__cta p{margin:0 0 16px;font-size:clamp(1.15rem,2.4vw,1.75rem);font-weight:900;letter-spacing:-.02em}
+    .reward-sim__cta a{display:inline-flex;align-items:center;justify-content:center;min-width:min(100%,360px);min-height:58px;padding:14px 20px;border-radius:13px;background:#111;color:#fff;text-decoration:none;font-weight:900;box-shadow:6px 6px 0 var(--pink);transition:.2s ease}
+    .reward-sim__cta a:hover,.reward-sim__cta a:focus-visible{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--pink);outline:none}
+
+    @media (max-width:768px){
+      .reward-sim{padding:72px 16px 84px}
+      .reward-sim__head{margin-bottom:30px}
+      .reward-sim__head h2{font-size:clamp(2rem,9.5vw,2.8rem);line-height:1.16;letter-spacing:-.025em}
+      .reward-sim__lead{font-size:.88rem;line-height:1.75}
+      .reward-highlights{grid-template-columns:1fr 1fr;gap:10px}
+      .reward-highlight{padding:18px 14px;border-radius:15px}
+      .reward-highlight:nth-child(5){grid-column:1/-1}
+      .reward-highlight__amount{font-size:1.35rem;line-height:1.15}
+      .reward-expand>summary{min-height:58px;padding:16px 14px;font-size:.88rem}
+      .reward-expand__body{padding:14px}
+      .reward-plan-tabs{grid-template-columns:1fr;gap:8px}
+      .reward-plan-tab{padding:13px 10px;font-size:.82rem}
+      .reward-rate-strip{grid-template-columns:1fr 1fr}
+      .reward-table{min-width:0;width:100%;table-layout:fixed}
+      .reward-table th,.reward-table td{padding:10px 5px;font-size:.72rem}
+      .reward-table th{font-size:.62rem;letter-spacing:.02em}
+      .reward-table td.rank{font-size:.72rem}
+      .reward-table td.reward{font-size:.78rem}
+      .reward-table th:first-child,.reward-table td:first-child{width:20%}
+      .reward-table th:nth-child(2),.reward-table td:nth-child(2){width:36%}
+      .reward-table th:nth-child(3),.reward-table td:nth-child(3){width:44%}
+      .reward-details .reward-table th:first-child,.reward-details .reward-table td:first-child{width:16%}
+      .reward-details .reward-table th:nth-child(2),.reward-details .reward-table td:nth-child(2){width:28%}
+      .reward-details .reward-table th:nth-child(3),.reward-details .reward-table td:nth-child(3){width:36%}
+      .reward-details .reward-table th:nth-child(4),.reward-details .reward-table td:nth-child(4){width:20%}
+      .reward-sim__cta{margin-top:34px}
+    }
+
+  
+    /* Palmu identification */
+    .palmu-label{display:inline-flex;align-items:center;gap:8px;width:max-content;margin:0 0 14px;padding:7px 11px;border:1px solid rgba(17,17,17,.14);border-radius:999px;background:rgba(255,255,255,.72);font-size:.72rem;font-weight:900;letter-spacing:.04em;color:#222}
+    .palmu-label::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--pink);box-shadow:0 0 0 4px rgba(255,22,143,.10)}
+
+    /* Final CTA: only conversion point after FV */
+    .final-cta{position:relative;overflow:hidden;padding:100px 24px 106px;background:#111;color:#fff;text-align:center}
+    .final-cta::before{content:"";position:absolute;width:440px;height:440px;border-radius:50%;right:-170px;top:-210px;background:radial-gradient(circle,rgba(255,22,143,.32),rgba(255,22,143,0) 68%)}
+    .final-cta::after{content:"GEMARIS";position:absolute;left:50%;bottom:-.12em;transform:translateX(-50%);font:900 clamp(5rem,15vw,12rem)/1 "Inter",sans-serif;letter-spacing:-.07em;color:rgba(255,255,255,.035);white-space:nowrap;pointer-events:none}
+    .final-cta__inner{position:relative;z-index:1;width:min(760px,100%);margin:0 auto}
+    .final-cta__kicker{margin:0 0 16px;font:900 .72rem/1 "Inter",sans-serif;letter-spacing:.18em;color:var(--pink)}
+    .final-cta h2{margin:0;font-size:clamp(2.3rem,5vw,4.5rem);line-height:1.14;letter-spacing:-.045em;font-weight:900}
+    .final-cta h2 span{color:var(--pink)}
+    .final-cta__lead{margin:20px auto 30px;color:#c9c9ce;font-size:.98rem;line-height:1.8;font-weight:700}
+    .final-cta__button{display:inline-flex;align-items:center;justify-content:center;gap:12px;width:min(430px,100%);min-height:66px;padding:15px 22px;border-radius:15px;background:#fff;color:#111;text-decoration:none;font-weight:900;box-shadow:7px 7px 0 var(--pink);transition:transform .2s ease,box-shadow .2s ease}
+    .final-cta__button::before{content:"LINE";display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#06c755;color:#fff;font:900 9px/1 "Inter",sans-serif}
+    .final-cta__button:hover,.final-cta__button:focus-visible{transform:translate(2px,2px);box-shadow:4px 4px 0 var(--pink);outline:none}
+    .final-cta__help{display:block;margin-top:16px;color:#aaaab0;font-size:.78rem;font-weight:800}
+    @media(max-width:768px){.palmu-label{margin-bottom:12px;font-size:.66rem}.final-cta{padding:76px 18px 84px}.final-cta h2{font-size:clamp(2rem,9vw,2.75rem);line-height:1.25;letter-spacing:-.025em}.final-cta__lead{font-size:.9rem;line-height:1.75}.final-cta__button{min-height:62px;font-size:.95rem;box-shadow:6px 6px 0 var(--pink)}}
+
   </style>
 </head>
 <body>
@@ -568,6 +993,7 @@
       </div>
 
       <div class="hero__content">
+        <p class="palmu-label reveal">ライブ配信アプリ「Palmu」所属ライバー募集中</p>
         <p class="eyebrow reveal">GEMARIS STREAMER AGENCY</p>
         <h1 class="hero__title reveal delay-1">
           <span class="title-line">配信者ファーストを、</span>
@@ -607,6 +1033,188 @@
       </div>
     </div>
   </section>
+
+
+  <section class="benefits" id="benefits" aria-labelledby="benefits-title">
+    <div class="benefits__inner">
+      <header class="section-heading scroll-reveal">
+        <p class="section-kicker">BENEFITS</p>
+        <h2 id="benefits-title">配信者ファーストを、<br><span class="pink">4つの条件で。</span></h2>
+        <p>Gemarisだからできる、配信者への還元とサポート。</p>
+      </header>
+
+      <div class="benefits-grid">
+        <article class="benefit-card scroll-reveal">
+          <div class="benefit-number" aria-hidden="true">01</div>
+          <span class="benefit-tag">SELF PRO</span>
+          <h3>実績が上がるほど、<br>還元率も上がる。</h3>
+          <div class="rate-table" aria-label="セルフプロ契約の還元率">
+            <div class="rate-row"><span class="rate-income">月間収益 3万円</span><strong>110%</strong></div>
+            <div class="rate-row"><span class="rate-income">月間収益 10万円</span><strong>115%</strong></div>
+            <div class="rate-row is-max"><span class="rate-income">月間収益 30万円</span><strong>120%</strong></div>
+          </div>
+          <p class="benefit-note">セルフプロ契約では、月間実績に応じて報酬還元率がアップします。</p>
+        </article>
+
+        <article class="benefit-card scroll-reveal">
+          <div class="benefit-number" aria-hidden="true">02</div>
+          <span class="benefit-tag">FULL SUPPORT</span>
+          <h3>配信を始めるための機材も、<br>Gemarisが用意。</h3>
+          <div class="equipment-box" aria-label="無償貸与機材">
+            <div class="equipment-name">YAMAHA<br>AG01</div>
+            <div class="equipment-plus" aria-hidden="true">＋</div>
+            <div class="equipment-name">ノートPC</div>
+          </div>
+          <div class="big-emphasis"><strong>2ヶ月間</strong><span>無償レンタル</span></div>
+          <p class="benefit-note">フルサポート契約では、配信環境が整っていない方にも機材を無償貸与します。</p>
+        </article>
+
+        <article class="benefit-card scroll-reveal">
+          <div class="benefit-number" aria-hidden="true">03</div>
+          <span class="benefit-tag">DEBUT CAMPAIGN</span>
+          <h3>スタートダッシュを、<br>本気で応援する。</h3>
+          <div class="campaign-list">
+            <div class="campaign-row"><div><span class="campaign-title">Bランク到達</span><small>初配信から30日以内</small></div><strong>4.5万円</strong></div>
+            <div class="campaign-row"><div><span class="campaign-title">Bランク維持</span><small>初配信から60日以内</small></div><strong>5万円</strong></div>
+            <div class="campaign-row"><div><span class="campaign-title">Aランク到達</span><small>初配信から60日以内</small></div><strong>10万円</strong></div>
+          </div>
+          <div class="campaign-total"><span>TOTAL</span><strong>最大19.5万円</strong></div>
+          <div class="campaign-double"><span>顔出し配信なら上記報酬が</span><strong>すべて2倍</strong><div class="campaign-max">最大39万円</div></div>
+          <div class="u18-bonus">さらにU18は <strong>＋5万円</strong></div>
+        </article>
+
+        <article class="benefit-card benefit-premium scroll-reveal">
+          <div class="benefit-number" aria-hidden="true">04</div>
+          <span class="benefit-tag">PREMIUM LIVER</span>
+          <h3>実績のある配信者には、<br>特別な選択肢を。</h3>
+          <p class="premium-target">他媒体で <strong>月間10万円以上</strong> の実績がある方に向けた特別制度。</p>
+          <div class="premium-feature"><span>PREMIUM DEBUT</span><strong>プレミア向けデビューキャンペーン</strong><span class="premium-max">最大60万円</span></div>
+          <div class="premium-plus" aria-hidden="true">＋</div>
+          <div class="premium-feature"><strong>他媒体での実績に応じた<br>月給保障制度</strong></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="reward-sim" id="reward-simulation" aria-labelledby="reward-sim-title">
+    <div class="reward-sim__inner">
+      <header class="reward-sim__head sim-animate">
+        <p class="reward-sim__kicker">PALMU REWARD SIMULATION</p>
+        <h2 id="reward-sim-title">Palmuで、実際どれくらい<br><span>稼げる？</span></h2>
+        <p class="reward-sim__lead">Palmuのランク別に、セルフプロ契約の報酬例を抜粋しました。</p>
+        <p class="reward-sim__meta">※ 2026年5月のスコア中央値を元に算出した報酬目安です。</p>
+      </header>
+
+      <div class="reward-highlights sim-animate" aria-label="セルフプロ契約の報酬例">
+        <div class="reward-highlight"><span class="reward-highlight__rank">B1 の報酬例</span><span class="reward-highlight__amount">約<strong>3.3</strong>万円</span><span class="reward-highlight__label">セルフプロ契約</span></div>
+        <div class="reward-highlight"><span class="reward-highlight__rank">A1 の報酬例</span><span class="reward-highlight__amount">約<strong>11.8</strong>万円</span><span class="reward-highlight__label">セルフプロ契約</span></div>
+        <div class="reward-highlight"><span class="reward-highlight__rank">A5 の報酬例</span><span class="reward-highlight__amount">約<strong>33.1</strong>万円</span><span class="reward-highlight__label">セルフプロ契約</span></div>
+        <div class="reward-highlight"><span class="reward-highlight__rank">S の報酬例</span><span class="reward-highlight__amount">約<strong>50.8</strong>万円</span><span class="reward-highlight__label">セルフプロ契約</span></div>
+        <div class="reward-highlight"><span class="reward-highlight__rank">SS の報酬例</span><span class="reward-highlight__amount">約<strong>72.4</strong>万円</span><span class="reward-highlight__label">セルフプロ契約</span></div>
+      </div>
+
+      <details class="reward-expand sim-animate">
+        <summary>収益シミュレーションを詳しく見る</summary>
+        <div class="reward-expand__body">
+          <div class="reward-plan-tabs" role="tablist" aria-label="契約プラン切替">
+            <button class="reward-plan-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="panel-self" id="tab-self" data-panel="self">セルフプロ契約</button>
+            <button class="reward-plan-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-full" id="tab-full" data-panel="full">フルサポート契約</button>
+          </div>
+
+          <div class="reward-panel is-active" id="panel-self" role="tabpanel" aria-labelledby="tab-self" data-reward-panel="self">
+            <div class="reward-rate-strip" aria-label="月間獲得ダイヤ別還元率">
+              <div class="reward-rate-chip"><span>30,000未満</span><strong>100%</strong></div>
+              <div class="reward-rate-chip"><span>30,000〜</span><strong>110%</strong></div>
+              <div class="reward-rate-chip"><span>100,000〜</span><strong>115%</strong></div>
+              <div class="reward-rate-chip"><span>300,000〜</span><strong>120%</strong></div>
+            </div>
+            <div class="reward-table-wrap">
+              <table class="reward-table">
+                <thead><tr><th>ランク</th><th>配信ダイヤ</th><th>報酬</th></tr></thead>
+                <tbody>
+                  <tr><td class="rank">C1</td><td>200</td><td class="reward">¥2,520</td></tr>
+                  <tr><td class="rank">C2</td><td>500</td><td class="reward">¥6,300</td></tr>
+                  <tr><td class="rank">C3</td><td>1,000</td><td class="reward">¥12,600</td></tr>
+                  <tr class="is-key"><td class="rank">B1</td><td>2,600</td><td class="reward">¥33,120</td></tr>
+                  <tr><td class="rank">B2</td><td>4,000</td><td class="reward">¥45,760</td></tr>
+                  <tr><td class="rank">B3</td><td>6,500</td><td class="reward">¥70,840</td></tr>
+                  <tr class="is-key"><td class="rank">A1</td><td>10,000</td><td class="reward">¥118,680</td></tr>
+                  <tr><td class="rank">A2</td><td>12,500</td><td class="reward">¥151,340</td></tr>
+                  <tr><td class="rank">A3</td><td>18,000</td><td class="reward">¥202,400</td></tr>
+                  <tr><td class="rank">A4</td><td>22,000</td><td class="reward">¥255,760</td></tr>
+                  <tr class="is-key"><td class="rank">A5</td><td>30,000</td><td class="reward">¥331,200</td></tr>
+                  <tr class="is-key"><td class="rank">S</td><td>45,000</td><td class="reward">¥508,800</td></tr>
+                  <tr class="is-key"><td class="rank">SS</td><td>64,000</td><td class="reward">¥724,800</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="reward-table-note">※ 表示金額は目安です。実際の獲得報酬は配信実績等により変動します。</p>
+          </div>
+
+          <div class="reward-panel" id="panel-full" role="tabpanel" aria-labelledby="tab-full" data-reward-panel="full" hidden>
+            <div class="reward-table-wrap">
+              <table class="reward-table">
+                <thead><tr><th>ランク</th><th>配信ダイヤ</th><th>報酬</th></tr></thead>
+                <tbody>
+                  <tr><td class="rank">C1</td><td>200</td><td class="reward">¥2,520</td></tr>
+                  <tr><td class="rank">C2</td><td>500</td><td class="reward">¥6,300</td></tr>
+                  <tr><td class="rank">C3</td><td>1,000</td><td class="reward">¥12,600</td></tr>
+                  <tr class="is-key"><td class="rank">B1</td><td>2,600</td><td class="reward">¥30,120</td></tr>
+                  <tr><td class="rank">B2</td><td>4,000</td><td class="reward">¥41,600</td></tr>
+                  <tr><td class="rank">B3</td><td>6,500</td><td class="reward">¥64,400</td></tr>
+                  <tr class="is-key"><td class="rank">A1</td><td>10,000</td><td class="reward">¥103,200</td></tr>
+                  <tr><td class="rank">A2</td><td>12,500</td><td class="reward">¥131,600</td></tr>
+                  <tr><td class="rank">A3</td><td>18,000</td><td class="reward">¥176,000</td></tr>
+                  <tr><td class="rank">A4</td><td>22,000</td><td class="reward">¥222,400</td></tr>
+                  <tr class="is-key"><td class="rank">A5</td><td>30,000</td><td class="reward">¥288,000</td></tr>
+                  <tr class="is-key"><td class="rank">S</td><td>45,000</td><td class="reward">¥424,000</td></tr>
+                  <tr class="is-key"><td class="rank">SS</td><td>64,000</td><td class="reward">¥604,000</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="reward-table-note">※ 2026年5月のスコア中央値を元に算出した報酬目安です。</p>
+          </div>
+
+          <details class="reward-details">
+            <summary>ランクキープ必要コイン数も見る</summary>
+            <div class="reward-details__body">
+              <div class="reward-table-wrap">
+                <table class="reward-table">
+                  <thead><tr><th>ランク</th><th>キープ目安</th><th>4週間目安</th><th>プラン</th></tr></thead>
+                  <tbody>
+                    <tr><td class="rank">B1</td><td>24,300</td><td>97,200</td><td>A</td></tr>
+                    <tr><td class="rank">B2</td><td>32,000</td><td>128,000</td><td>A</td></tr>
+                    <tr><td class="rank">B3</td><td>48,000</td><td>192,000</td><td>C</td></tr>
+                    <tr><td class="rank">A1</td><td>79,000</td><td>316,000</td><td>B</td></tr>
+                    <tr><td class="rank">A2</td><td>102,000</td><td>408,000</td><td>B</td></tr>
+                    <tr><td class="rank">A3</td><td>130,000</td><td>520,000</td><td>C</td></tr>
+                    <tr><td class="rank">A4</td><td>168,000</td><td>672,000</td><td>C</td></tr>
+                    <tr><td class="rank">A5</td><td>210,000</td><td>840,000</td><td>C</td></tr>
+                    <tr class="is-key"><td class="rank">S</td><td>305,000</td><td>1,220,000</td><td>C</td></tr>
+                    <tr><td class="rank">SS</td><td>435,000</td><td>1,740,000</td><td>C</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="keep-note">推奨メータープラン：A＝＋4を1回 / ＋2を2回、B＝＋4を2回、C＝＋6を1回。</p>
+            </div>
+          </details>
+        </div>
+      </details>
+    </div>
+  </section>
+
+
+  <section class="final-cta" aria-labelledby="final-cta-title">
+    <div class="final-cta__inner sim-animate">
+      <p class="final-cta__kicker">YOUR NEXT STEP</p>
+      <h2 id="final-cta-title">配信するなら、<br><span>もっといい条件で。</span></h2>
+      <p class="final-cta__lead">ライブ配信アプリ「Palmu」で、Gemarisと新しい配信を始めませんか。</p>
+      <a class="final-cta__button" href="https://lin.ee/PKv1zts" target="_blank" rel="noopener noreferrer">LINEで詳細を確認する</a>
+      <span class="final-cta__help">相談だけでもOK</span>
+    </div>
+  </section>
+
 
   <script>
     (() => {
@@ -659,5 +1267,115 @@
       start();
     })();
   </script>
+
+  <script>
+    (() => {
+      const groups = [];
+
+      const heading = document.querySelector('.section-heading');
+      if (heading) {
+        const parts = [...heading.querySelectorAll('.section-kicker, h2, p')];
+        parts.forEach((el, i) => {
+          el.classList.add('text-reveal');
+          el.style.setProperty('--text-delay', `${i * 140}ms`);
+        });
+        groups.push({ trigger: heading, parts });
+      }
+
+      document.querySelectorAll('.benefit-card').forEach((card) => {
+        const parts = [...card.querySelectorAll('.benefit-tag, h3, .rate-row, .equipment-box, .big-emphasis, .campaign-row, .campaign-total, .campaign-double, .u18-bonus, .premium-target, .premium-feature, .premium-plus, .benefit-note')];
+        parts.forEach((el, i) => {
+          const isStrong = el.matches('.big-emphasis, .campaign-total, .campaign-double, .premium-feature');
+          el.classList.add(isStrong ? 'text-pop' : 'text-reveal');
+          el.style.setProperty('--text-delay', `${Math.min(i * 120, 600)}ms`);
+        });
+        groups.push({ trigger: card, parts });
+      });
+
+      const cta = document.querySelector('.benefits-cta');
+      if (cta) {
+        const parts = [...cta.querySelectorAll('.benefits-cta__question, .benefits-cta__sub, .benefits-line-btn, small')];
+        parts.forEach((el, i) => {
+          el.classList.add(i === 2 ? 'text-pop' : 'text-reveal');
+          el.style.setProperty('--text-delay', `${i * 130}ms`);
+        });
+        groups.push({ trigger: cta, parts });
+      }
+
+      const revealGroup = (group) => {
+        // 1フレーム遅らせて初期状態→表示状態の差を必ず描画する
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            group.parts.forEach(el => el.classList.add('is-visible'));
+          });
+        });
+      };
+
+      if (!('IntersectionObserver' in window)) {
+        groups.forEach(revealGroup);
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const group = groups.find(g => g.trigger === entry.target);
+          if (group) revealGroup(group);
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+
+      groups.forEach(group => observer.observe(group.trigger));
+    })();
+  </script>
+
+
+  <script>
+    (() => {
+      // Reward plan tabs
+      const tabs = [...document.querySelectorAll('.reward-plan-tab')];
+      const panels = [...document.querySelectorAll('[data-reward-panel]')];
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const name = tab.dataset.panel;
+          tabs.forEach(t => {
+            const active = t === tab;
+            t.classList.toggle('is-active', active);
+            t.setAttribute('aria-selected', active ? 'true' : 'false');
+          });
+          panels.forEach(panel => {
+            const active = panel.dataset.rewardPanel === name;
+            panel.classList.toggle('is-active', active);
+            panel.hidden = !active;
+          });
+        });
+      });
+
+      // Reward section text animation
+      const blocks = [...document.querySelectorAll('.sim-animate')];
+      blocks.forEach((block, index) => {
+        block.style.opacity = '0';
+        block.style.transform = 'translateY(28px)';
+        block.style.transition = 'opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)';
+      });
+      const reveal = (el) => requestAnimationFrame(() => requestAnimationFrame(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }));
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            reveal(entry.target);
+            io.unobserve(entry.target);
+          });
+        }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+        blocks.forEach(el => io.observe(el));
+      } else {
+        blocks.forEach(reveal);
+      }
+    })();
+  </script>
+
 </body>
 </html>
