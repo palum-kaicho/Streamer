@@ -136,7 +136,13 @@
       box-shadow:none;
     }
     .brand__badge img{width:100%;height:100%;object-fit:contain;object-position:left center;display:block}
-    .brand__text{font:800 12px/1 "Inter",sans-serif;letter-spacing:.2em;color:#26262a}
+    .brand__descriptor{
+      display:flex;flex-direction:column;justify-content:center;gap:5px;
+      padding-left:16px;border-left:1px solid rgba(17,17,17,.22);
+      color:#26262a;font-family:"Inter",sans-serif;white-space:nowrap;
+    }
+    .brand__descriptor span{font-size:10px;font-weight:800;line-height:1;letter-spacing:.18em}
+    .brand__descriptor small{font-size:9px;font-weight:600;line-height:1;letter-spacing:.12em;color:#707078}
 
     .hero__content{position:relative;z-index:10;max-width:650px;padding-right:18px}
     .eyebrow{
@@ -366,13 +372,15 @@
         box-shadow:none;
       }
       .brand__badge img{width:100%;height:100%;object-fit:contain;object-position:left center}
-      .brand__text{
-        color:#222229;
-        font-size:8.5px;
-        letter-spacing:.18em;
-        white-space:nowrap;
+      .brand__descriptor{
+        margin-left:auto;
+        padding-left:10px;
+        gap:4px;
+        border-left:1px solid rgba(17,17,17,.20);
         align-self:center;
       }
+      .brand__descriptor span{font-size:7.5px;letter-spacing:.12em}
+      .brand__descriptor small{font-size:7px;letter-spacing:.08em}
 
       .pager{top:76px;right:0}
       .pager button{width:14px;height:3px}
@@ -982,7 +990,7 @@
     <div class="hero__inner">
       <div class="brand">
         <div class="brand__badge"><img src="images/logo-web.png" alt="Gemaris"></div>
-        <span class="brand__text">LIVE FOR MORE.</span>
+        <div class="brand__descriptor"><span>LIVE STREAMER SUPPORT.</span><small>Powered by Gemaris</small></div>
       </div>
 
       <div class="pager" aria-label="メインビジュアル切替">
