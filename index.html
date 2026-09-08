@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f7f5f2" />
+  <title>Gemaris | 配信者ファーストを、条件で証明する。</title>
+  <meta name="description" content="Gemarisの広告LPファーストビュー デモ" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&family=Noto+Sans+JP:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --paper:#f8f7f4;
+      --paper-2:#efede8;
+      --ink:#111111;
+      --muted:#5c5c62;
+      --pink:#ff168f;
+      --pink-soft:#ff77b9;
+      --line:rgba(17,17,17,.14);
+      --shadow:0 20px 70px rgba(13,13,17,.13);
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:var(--paper);
+      font-family:"Noto Sans JP",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    a{color:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+
+    .hero{
+      position:relative;
+      min-height:100svh;
+      overflow:hidden;
+      isolation:isolate;
+      background:
+        radial-gradient(circle at 78% 44%, rgba(255,22,143,.17), transparent 27%),
+        radial-gradient(circle at 92% 12%, rgba(255,22,143,.08), transparent 20%),
+        linear-gradient(135deg,var(--paper) 0%,#fff 43%,var(--paper-2) 100%);
+    }
+
+    /* editorial background */
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-6;
+      opacity:.17;
+      pointer-events:none;
+      background-image:
+        linear-gradient(rgba(0,0,0,.045) 1px, transparent 1px),
+        linear-gradient(90deg,rgba(0,0,0,.045) 1px, transparent 1px);
+      background-size:64px 64px;
+      mask-image:linear-gradient(to right,black,transparent 70%);
+    }
+
+    .noise{
+      position:absolute; inset:0; z-index:-5; pointer-events:none; opacity:.26;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+      mix-blend-mode:multiply;
+    }
+
+    .bg-word{
+      position:absolute;
+      z-index:-4;
+      left:-.04em;
+      bottom:-.1em;
+      margin:0;
+      font:900 clamp(5.2rem,14vw,13rem)/.8 "Inter",sans-serif;
+      letter-spacing:-.08em;
+      color:rgba(17,17,17,.045);
+      white-space:nowrap;
+      user-select:none;
+      pointer-events:none;
+    }
+
+    .brush{
+      position:absolute;
+      z-index:-3;
+      pointer-events:none;
+      filter:blur(.2px);
+    }
+    .brush--pink{
+      width:min(34vw,490px); height:18px; right:8%; top:18%;
+      background:var(--pink);
+      transform:rotate(-9deg) skewX(-22deg);
+      box-shadow:0 0 35px rgba(255,22,143,.25);
+      opacity:.85;
+      clip-path:polygon(0 30%,96% 0,100% 30%,78% 58%,100% 72%,12% 100%,0 70%);
+    }
+    .brush--black{
+      width:min(22vw,330px); height:8px; left:3%; bottom:14%;
+      background:#111;
+      transform:rotate(7deg) skewX(-18deg);
+      opacity:.75;
+      clip-path:polygon(0 40%,100% 0,87% 60%,100% 80%,8% 100%);
+    }
+
+    .mark{position:absolute;z-index:-2;font-family:"Inter",sans-serif;font-weight:700;color:rgba(17,17,17,.38);pointer-events:none}
+    .mark--plus{left:3.5%;top:21%;font-size:26px}
+    .mark--cross{left:47%;top:10%;font-size:17px;letter-spacing:.2em}
+    .mark--dots{left:4%;bottom:22%;font-size:22px;letter-spacing:.34em}
+
+    .frame-line{position:absolute;pointer-events:none;z-index:-2;border-color:rgba(17,17,17,.11)}
+    .frame-line--v{left:47%;top:8%;height:84%;border-left:1px solid var(--line)}
+    .frame-line--h{left:3%;right:3%;top:9%;border-top:1px solid var(--line)}
+
+    .hero__inner{
+      width:min(calc(100% - 52px),var(--max));
+      min-height:100svh;
+      margin-inline:auto;
+      position:relative;
+      display:grid;
+      grid-template-columns:minmax(0,1.02fr) minmax(360px,.98fr);
+      align-items:center;
+      gap:20px;
+      padding:118px 0 58px;
+    }
+
+    .brand{
+      position:absolute;
+      top:26px; left:0;
+      display:flex;align-items:center;gap:14px;
+      z-index:20;
+    }
+    .brand__badge{
+      width:156px;height:50px;border-radius:0;background:transparent;
+      display:grid;place-items:center;padding:0;
+      box-shadow:none;
+    }
+    .brand__badge img{width:100%;height:100%;object-fit:contain;object-position:left center;display:block}
+    .brand__text{font:800 12px/1 "Inter",sans-serif;letter-spacing:.2em;color:#26262a}
+
+    .hero__content{position:relative;z-index:10;max-width:650px;padding-right:18px}
+    .eyebrow{
+      display:flex;align-items:center;gap:10px;
+      margin:0 0 18px;
+      font:800 11px/1.1 "Inter",sans-serif;
+      letter-spacing:.19em;
+      color:#2c2c31;
+      text-transform:uppercase;
+    }
+    .eyebrow::before{content:"";width:32px;height:3px;background:var(--pink)}
+
+    .hero__title{
+      margin:0;
+      font-size:clamp(2.65rem,5vw,5rem);
+      line-height:1.08;
+      letter-spacing:-.045em;
+      font-weight:900;
+      text-wrap:balance;
+    }
+    .hero__title .accent{
+      position:relative;
+      display:inline-block;
+      z-index:0;
+    }
+    .title-line{display:block;}
+    .hero__title .accent::after{
+      content:"";
+      position:absolute;left:-.02em;right:-.05em;bottom:.05em;height:.18em;
+      background:var(--pink);
+      z-index:-1;
+      transform:skewX(-12deg) rotate(-1deg);
+      opacity:.92;
+    }
+
+    .hero__sub{
+      margin:22px 0 26px;
+      font-size:clamp(.95rem,1.3vw,1.12rem);
+      line-height:1.8;
+      font-weight:700;
+      color:#47474d;
+    }
+
+    .proof{
+      display:grid;
+      grid-template-columns:1fr 1px 1fr;
+      align-items:stretch;
+      max-width:575px;
+      border-top:1px solid rgba(17,17,17,.18);
+      border-bottom:1px solid rgba(17,17,17,.18);
+      padding:18px 0 17px;
+      margin-bottom:12px;
+    }
+    .proof__divider{background:rgba(17,17,17,.2);margin:2px 22px}
+    .proof__item{min-width:0}
+    .proof__number{
+      display:block;
+      font:900 clamp(2.1rem,4.5vw,4.5rem)/.9 "Inter",sans-serif;
+      letter-spacing:-.075em;
+      color:var(--pink);
+      white-space:nowrap;
+      text-shadow:0 0 28px rgba(255,22,143,.09);
+    }
+    .proof__label{
+      display:block;margin-top:9px;font-size:.84rem;font-weight:800;letter-spacing:.08em;color:#28282d;
+    }
+    .note{margin:8px 0 20px;font-size:.72rem;line-height:1.55;color:#68686f;font-weight:600}
+
+    .cta-wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .cta{
+      min-width:min(100%,340px);
+      display:inline-flex;align-items:center;justify-content:space-between;gap:20px;
+      padding:16px 18px 16px 20px;
+      border-radius:13px;
+      text-decoration:none;
+      color:#fff;
+      background:#111;
+      font-size:1rem;
+      font-weight:900;
+      border:1px solid #111;
+      box-shadow:0 12px 30px rgba(17,17,17,.16);
+      transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
+    }
+    .cta:hover,.cta:focus-visible{transform:translateY(-2px);box-shadow:0 17px 38px rgba(17,17,17,.23);background:#191919;outline:none}
+    .cta__icon{
+      width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+      background:#06c755;color:#fff;font:900 10px/1 "Inter",sans-serif;letter-spacing:-.02em;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)
+    }
+    .cta__arrow{font:900 1.4rem/1 "Inter",sans-serif;color:var(--pink);transition:transform .25s ease}
+    .cta:hover .cta__arrow{transform:translateX(4px)}
+    .cta-help{font-size:.78rem;font-weight:800;color:#55555c}
+
+    /* Model stage */
+    .model-stage{
+      position:absolute;
+      z-index:4;
+      right:-6vw;
+      top:0;
+      width:min(61vw,790px);
+      height:100%;
+      pointer-events:none;
+      overflow:hidden;
+      mask-image:linear-gradient(to right, transparent 0%, black 18%, black 90%);
+    }
+    .model-stage::before{
+      content:"";position:absolute;inset:7% 0 2% 11%;z-index:-1;
+      background:
+        radial-gradient(circle at 55% 40%,rgba(255,22,143,.23),transparent 38%),
+        linear-gradient(145deg,transparent 32%,rgba(17,17,17,.08) 70%,rgba(255,22,143,.12));
+      clip-path:polygon(23% 0,100% 0,100% 100%,0 100%,11% 60%);
+      filter:blur(1px);
+    }
+    .model{
+      position:absolute;
+      right:0;bottom:-1%;
+      width:100%;height:98%;
+      object-fit:contain;
+      object-position:right bottom;
+      opacity:0;
+      transform:scale(1.015);
+      transition:opacity .9s ease,transform 1.1s ease;
+      filter:saturate(.93) contrast(1.02);
+      mix-blend-mode:multiply;
+      mask-image:linear-gradient(to bottom,black 0%,black 86%,transparent 100%);
+    }
+    .model.is-active{opacity:1;transform:scale(1)}
+    .model--dark{mix-blend-mode:normal}
+    .model--female-v{
+      object-fit:cover;
+      object-position:center 42%;
+      width:68%;height:92%;right:2%;bottom:0;
+      border-radius:44% 0 0 0;
+      mask-image:linear-gradient(to left,black 0%,black 62%,transparent 100%);
+      opacity:0;
+      filter:saturate(.62) contrast(1.05) hue-rotate(-5deg);
+      mix-blend-mode:multiply;
+    }
+    .model--female-v.is-active{opacity:.83}
+
+    .model-caption{
+      position:absolute;right:3%;bottom:5%;z-index:5;
+      font:800 10px/1.3 "Inter",sans-serif;letter-spacing:.19em;color:rgba(17,17,17,.45);
+      text-align:right;text-transform:uppercase;
+    }
+
+    .pager{
+      position:absolute;right:0;top:28px;z-index:20;
+      display:flex;gap:7px;align-items:center;
+    }
+    .pager button{
+      width:22px;height:4px;border:0;padding:0;background:rgba(17,17,17,.2);cursor:pointer;border-radius:999px;
+      transition:width .25s ease,background .25s ease;
+    }
+    .pager button.is-active{width:42px;background:var(--pink)}
+    .pager button:focus-visible{outline:2px solid var(--pink);outline-offset:4px}
+
+    /* 初回表示アニメーション：JSでis-readyを付けて確実に発火 */
+    .reveal{
+      opacity:0;
+      transform:translateY(20px);
+      transition:
+        opacity .72s cubic-bezier(.2,.7,.25,1),
+        transform .72s cubic-bezier(.2,.7,.25,1);
+      transition-delay:var(--reveal-delay,0s);
+      will-change:opacity,transform;
+    }
+    .hero.is-ready .reveal{opacity:1;transform:translateY(0)}
+    .delay-1{--reveal-delay:.12s}.delay-2{--reveal-delay:.24s}.delay-3{--reveal-delay:.36s}.delay-4{--reveal-delay:.48s}
+
+    @media (max-width: 900px){
+      .hero__inner{width:min(calc(100% - 34px),740px);grid-template-columns:1fr;padding:105px 0 42px;align-items:start}
+      .hero__content{max-width:620px;padding-right:0}
+      .frame-line--v{display:none}
+      .model-stage{
+        width:72vw;height:72%;right:-24vw;top:9%;opacity:.58;z-index:0;
+        mask-image:linear-gradient(to right,transparent 0%,black 30%,black 100%);
+      }
+      .model-stage::after{
+        content:"";position:absolute;inset:0;z-index:8;
+        background:linear-gradient(90deg,var(--paper) 0%,rgba(248,247,244,.92) 20%,rgba(248,247,244,.35) 56%,transparent 100%);
+      }
+      .hero__content{z-index:10}
+      .proof{max-width:520px}
+      .pager{top:30px}
+      .model-caption{display:none}
+    }
+
+    @media (max-width: 620px){
+      .hero{
+        min-height:100svh;
+        background:
+          radial-gradient(circle at 95% 42%, rgba(255,22,143,.13), transparent 28%),
+          linear-gradient(160deg,#fbfaf8 0%,#fff 58%,#f3efef 100%);
+      }
+      .hero__inner{
+        width:calc(100% - 32px);
+        padding:94px 0 28px;
+        min-height:100svh;
+        display:block;
+      }
+
+      /* ロゴは白地に直接置き、黒文字が背景へ溶けないようにする */
+      .brand{
+        top:12px;
+        left:0;
+        right:0;
+        height:52px;
+        padding:0;
+        background:transparent;
+        border:0;
+        display:flex;
+        justify-content:space-between;
+        gap:12px;
+        box-shadow:none;
+      }
+      .brand::after{
+        content:"";position:absolute;left:0;right:0;bottom:-8px;height:1px;
+        background:linear-gradient(90deg,rgba(17,17,17,.16),rgba(255,22,143,.34),rgba(17,17,17,.08));
+      }
+      .brand__badge{
+        width:156px;
+        height:46px;
+        padding:0;
+        border-radius:0;
+        background:transparent;
+        box-shadow:none;
+      }
+      .brand__badge img{width:100%;height:100%;object-fit:contain;object-position:left center}
+      .brand__text{
+        color:#222229;
+        font-size:8.5px;
+        letter-spacing:.18em;
+        white-space:nowrap;
+        align-self:center;
+      }
+
+      .pager{top:76px;right:0}
+      .pager button{width:14px;height:3px}
+      .pager button.is-active{width:26px}
+
+      .hero__content{
+        position:relative;
+        z-index:10;
+        max-width:none;
+        padding:0;
+      }
+      .eyebrow{
+        margin:0 0 12px;
+        font-size:8px;
+        letter-spacing:.14em;
+      }
+      .eyebrow::before{width:26px;height:3px}
+
+      /* 自動改行に任せず2行固定 */
+      .hero__title{
+        font-size:clamp(1.9rem,8.2vw,2.35rem);
+        line-height:1.14;
+        letter-spacing:-.055em;
+        max-width:100%;
+      }
+      .title-line{
+        display:block;
+        white-space:nowrap;
+      }
+      .hero__title .accent::after{
+        bottom:-.02em;
+        height:.16em;
+      }
+
+      .hero__sub{
+        margin:18px 0 18px;
+        font-size:.83rem;
+        line-height:1.65;
+        max-width:72%;
+      }
+
+      /* 数字は縦積みにして視認性を優先 */
+      .proof{
+        position:relative;
+        z-index:11;
+        display:grid;
+        grid-template-columns:1fr;
+        gap:0;
+        max-width:66%;
+        padding:0;
+        margin:0 0 8px;
+        border-top:1px solid rgba(17,17,17,.16);
+        border-bottom:1px solid rgba(17,17,17,.16);
+        background:rgba(255,255,255,.56);
+        backdrop-filter:blur(3px);
+      }
+      .proof__item{padding:12px 4px 11px}
+      .proof__item + .proof__item{border-top:1px solid rgba(17,17,17,.14)}
+      .proof__divider{display:none}
+      .proof__number{
+        font-size:clamp(2rem,10.6vw,2.9rem);
+        line-height:.95;
+        letter-spacing:-.065em;
+      }
+      .proof__label{
+        margin-top:6px;
+        font-size:.68rem;
+        letter-spacing:.04em;
+      }
+      .note{
+        max-width:68%;
+        margin:8px 0 14px;
+        font-size:.62rem;
+        line-height:1.55;
+      }
+
+      .cta-wrap{
+        display:block;
+        position:relative;
+        z-index:12;
+        max-width:100%;
+      }
+      .cta{
+        width:100%;
+        min-width:0;
+        padding:14px 14px 14px 16px;
+        border-radius:11px;
+        font-size:.9rem;
+        box-shadow:0 10px 24px rgba(17,17,17,.18);
+      }
+      .cta__icon{width:31px;height:31px;font-size:9px}
+      .cta-help{display:block;text-align:center;margin-top:7px;font-size:.68rem}
+
+      /* 人物は文字の背後まで大胆に侵入させる。コピーは前面に固定。 */
+      .model-stage{
+        width:108vw;
+        height:82%;
+        right:-28vw;
+        left:auto;
+        top:auto;
+        bottom:-2%;
+        opacity:1;
+        z-index:1;
+        overflow:visible;
+        mask-image:linear-gradient(to right, transparent 0%, rgba(0,0,0,.42) 18%, black 42%, black 100%);
+      }
+      .model-stage::before{opacity:.45}
+      .model-stage::after{
+        content:"";
+        position:absolute;
+        inset:0;
+        z-index:8;
+        pointer-events:none;
+        background:linear-gradient(90deg,#fbfaf8 0%,rgba(251,250,248,.78) 17%,rgba(251,250,248,.26) 38%,transparent 67%);
+      }
+      .model{
+        right:-2%;
+        bottom:0;
+        width:100%;
+        height:96%;
+        object-fit:contain;
+        object-position:right bottom;
+        opacity:0;
+        filter:saturate(.88) contrast(1.01);
+        mix-blend-mode:multiply;
+      }
+      .model.is-active{opacity:.48}
+      .model--dark{mix-blend-mode:multiply}
+      .model--dark.is-active{opacity:.42}
+      .model--female-v{
+        width:100%;
+        height:96%;
+        right:0;
+        bottom:0;
+        object-fit:contain;
+        object-position:right bottom;
+        border-radius:0;
+        mask-image:none;
+        filter:saturate(.68) contrast(1.03);
+        mix-blend-mode:multiply;
+      }
+      .model--female-v.is-active{opacity:.38}
+
+      .bg-word{font-size:27vw;bottom:3%;left:-5%;opacity:.7}
+      .brush--pink{right:-18%;top:13%;width:58vw;height:13px;opacity:.72}
+      .brush--black{display:none}
+      .mark--plus{left:2%;top:16%;font-size:22px}
+      .mark--cross,.mark--dots{display:none}
+      .frame-line--h{top:72px;left:0;right:0}
+    }
+
+    @media (max-width: 380px){
+      .hero__inner{width:calc(100% - 26px);padding-top:90px}
+      .brand{left:-13px;right:-13px}
+      .hero__title{font-size:clamp(1.72rem,8vw,2rem)}
+      .hero__sub{max-width:75%;font-size:.78rem;margin:15px 0}
+      .proof{max-width:68%}
+      .proof__number{font-size:clamp(1.85rem,10vw,2.45rem)}
+      .note{max-width:70%}
+      .model-stage{width:112vw;right:-34vw}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .model{transition:none}
+      .cta,.cta__arrow,.pager button{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <section class="hero" id="hero" aria-label="Gemaris ライバー募集">
+    <div class="noise" aria-hidden="true"></div>
+    <div class="brush brush--pink" aria-hidden="true"></div>
+    <div class="brush brush--black" aria-hidden="true"></div>
+    <span class="mark mark--plus" aria-hidden="true">＋</span>
+    <span class="mark mark--cross" aria-hidden="true">× × ×</span>
+    <span class="mark mark--dots" aria-hidden="true">···</span>
+    <span class="frame-line frame-line--v" aria-hidden="true"></span>
+    <span class="frame-line frame-line--h" aria-hidden="true"></span>
+    <p class="bg-word" aria-hidden="true">STREAMER FIRST</p>
+
+    <div class="hero__inner">
+      <div class="brand">
+        <div class="brand__badge"><img src="images/logo-web.png" alt="Gemaris"></div>
+        <span class="brand__text">LIVE FOR MORE.</span>
+      </div>
+
+      <div class="pager" aria-label="メインビジュアル切替">
+        <button class="is-active" type="button" aria-label="ビジュアル1" aria-current="true"></button>
+        <button type="button" aria-label="ビジュアル2"></button>
+        <button type="button" aria-label="ビジュアル3"></button>
+        <button type="button" aria-label="ビジュアル4"></button>
+      </div>
+
+      <div class="hero__content">
+        <p class="eyebrow reveal">GEMARIS STREAMER AGENCY</p>
+        <h1 class="hero__title reveal delay-1">
+          <span class="title-line">配信者ファーストを、</span>
+          <span class="title-line accent">条件で証明する。</span>
+        </h1>
+        <p class="hero__sub reveal delay-2">「配信者のため」は、条件に表れる。</p>
+
+        <div class="proof reveal delay-3" aria-label="Gemarisの主な条件">
+          <div class="proof__item">
+            <strong class="proof__number">最大120%</strong>
+            <span class="proof__label">報酬還元率</span>
+          </div>
+          <div class="proof__divider" aria-hidden="true"></div>
+          <div class="proof__item">
+            <strong class="proof__number">最大39万円</strong>
+            <span class="proof__label">デビュー特典</span>
+          </div>
+        </div>
+        <p class="note reveal delay-3">※ ラジオ配信はデビュー特典最大19.5万円</p>
+
+        <div class="cta-wrap reveal delay-4">
+          <a class="cta" href="https://lin.ee/PKv1zts" target="_blank" rel="noopener noreferrer" aria-label="LINEでGemarisの詳細を確認する">
+            <span class="cta__icon" aria-hidden="true">LINE</span>
+            <span>LINEで詳細を確認する</span>
+            <span class="cta__arrow" aria-hidden="true">→</span>
+          </a>
+          <span class="cta-help">相談だけでもOK</span>
+        </div>
+      </div>
+
+      <div class="model-stage" aria-hidden="true">
+        <img class="model is-active" src="images/fv-risa.png" alt="">
+        <img class="model model--dark" src="images/fv-kaicho.png" alt="">
+        <img class="model model--female-v" src="images/fv-female-v.png" alt="">
+        <img class="model model--dark" src="images/fv-male-v.png" alt="">
+        <span class="model-caption">REAL × VIRTUAL<br>FEMALE × MALE</span>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (() => {
+      const hero = document.getElementById('hero');
+      const models = [...document.querySelectorAll('.model')];
+      const dots = [...document.querySelectorAll('.pager button')];
+      let index = 0;
+      let timer = null;
+
+      // 初期状態を必ず1フレーム以上描画してから発火。ローカルHTMLでも確実に動作させる。
+      hero.classList.remove('is-ready');
+      setTimeout(() => {
+        hero.classList.add('is-ready');
+      }, 180);
+
+      // 画像先読み
+      models.forEach((model) => {
+        const img = new Image();
+        img.src = model.currentSrc || model.src;
+      });
+
+      const show = (next) => {
+        index = (next + models.length) % models.length;
+        models.forEach((model, i) => model.classList.toggle('is-active', i === index));
+        dots.forEach((dot, i) => {
+          const active = i === index;
+          dot.classList.toggle('is-active', active);
+          dot.setAttribute('aria-current', active ? 'true' : 'false');
+        });
+      };
+
+      const start = () => {
+        clearInterval(timer);
+        timer = setInterval(() => show(index + 1), 4000);
+      };
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          show(i);
+          start();
+        });
+      });
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) clearInterval(timer);
+        else start();
+      });
+
+      show(0);
+      start();
+    })();
+  </script>
+</body>
+</html>
