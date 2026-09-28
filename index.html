@@ -9,16 +9,6 @@
     gtag('js', new Date());
     gtag('config', 'G-9TNEFE4L9K');
   </script>
-
-  <!-- TikTok Pixel Code Start -->
-  <script>
-  !function (w, d, t) {
-    w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-    ttq.load('DAK971RC77U137VEQTB0');
-    ttq.page();
-  }(window, document, 'ttq');
-  </script>
-  <!-- TikTok Pixel Code End -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#f7f5f2" />
@@ -964,6 +954,29 @@
     }
 
   
+
+    /* Rank-up coin table */
+    .rankup-details{margin-top:10px}
+    .rankup-details .reward-table-wrap{overflow:hidden}
+    .rankup-table{table-layout:fixed;width:100%}
+    .rankup-table th,.rankup-table td{box-sizing:border-box}
+    .rankup-table th:first-child,.rankup-table td:first-child{width:32%}
+    .rankup-table th:nth-child(2),.rankup-table td:nth-child(2){width:36%}
+    .rankup-table th:nth-child(3),.rankup-table td:nth-child(3){width:32%}
+    .rankup-table td.rank{letter-spacing:0}
+    .rankup-table tr.is-key td{background:rgba(255,22,143,.045)}
+    .rankup-table tr.is-key td.rank,.rankup-table tr.is-key td.reward{color:var(--pink);font-weight:900}
+    @media(max-width:768px){
+      .rankup-details .reward-details__body{padding:0 10px 12px}
+      .rankup-table th,.rankup-table td{padding:11px 7px;font-size:.70rem}
+      .rankup-table th{font-size:.60rem;letter-spacing:0}
+      .rankup-table td.rank{font-size:.68rem;letter-spacing:-.02em}
+      .rankup-table td.reward{font-size:.76rem}
+      .rankup-details .rankup-table th:first-child,.rankup-details .rankup-table td:first-child{width:32%}
+      .rankup-details .rankup-table th:nth-child(2),.rankup-details .rankup-table td:nth-child(2){width:36%}
+      .rankup-details .rankup-table th:nth-child(3),.rankup-details .rankup-table td:nth-child(3){width:32%}
+    }
+
     /* Palmu identification */
     .palmu-label{display:inline-flex;align-items:center;gap:8px;width:max-content;margin:0 0 14px;padding:7px 11px;border:1px solid rgba(17,17,17,.14);border-radius:999px;background:rgba(255,255,255,.72);font-size:.72rem;font-weight:900;letter-spacing:.04em;color:#222}
     .palmu-label::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--pink);box-shadow:0 0 0 4px rgba(255,22,143,.10)}
@@ -1139,6 +1152,49 @@
       .benefit-card:nth-child(2) .equipment-box{margin:33px 0 27px;gap:9px}
       .benefit-card:nth-child(2) .equipment-name{min-height:80px;padding:14px 10px;font-size:.86rem;line-height:1.45;white-space:normal}
       .benefit-card:nth-child(2) .equipment-plus{font-size:1.4rem}
+    }
+
+
+/* ===== FV SIMPLE 2026-09-28 ===== */
+.hero__content .eyebrow,.hero__content .note{display:none}
+.proof--single{display:block;border:0;padding:0;margin:30px 0 24px;max-width:none;background:none}
+.proof--single .proof__item{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding:0}
+.proof--single .proof__label--lead{display:none}
+.proof--single .proof__number{order:2;font-size:clamp(3.4rem,6.4vw,6rem);line-height:.9;letter-spacing:-.075em}
+.proof--single .proof__label:not(.proof__label--lead){order:1;margin:0;font-size:.82rem;letter-spacing:.12em}
+.hero__sub{max-width:500px;margin:25px 0 0;font-size:clamp(.96rem,1.25vw,1.08rem);line-height:1.8}
+.hero__title{font-size:clamp(2.8rem,5.25vw,5.1rem)}
+.model-stage{right:-9vw;width:min(57vw,720px);opacity:.82}
+.cta{min-width:min(100%,300px)}
+@media(max-width:620px){
+  .hero__inner{padding-top:94px;padding-bottom:24px}
+  .palmu-label{font-size:.62rem;padding:6px 9px;margin-bottom:17px}
+  .hero__title{font-size:clamp(2.05rem,8.9vw,2.55rem);line-height:1.12;max-width:92%}
+  .hero__title .accent::after{height:.12em}
+  .hero__sub{max-width:76%;margin:20px 0 0;font-size:.82rem;line-height:1.72}
+  .proof--single{max-width:100%;margin:28px 0 22px;background:none;border:0;backdrop-filter:none}
+  .proof--single .proof__item{display:block;padding:0}
+  .proof--single .proof__label:not(.proof__label--lead){display:block;margin:0 0 7px;font-size:.65rem;letter-spacing:.13em}
+  .proof--single .proof__number{display:block;font-size:clamp(3rem,14.5vw,4.05rem);line-height:.9}
+  .cta-wrap{max-width:88%}
+  .cta{padding:13px 14px 13px 16px;font-size:.84rem}
+  .cta-help{font-size:.62rem}
+  .model-stage{width:83vw;height:67%;right:-26vw;bottom:0;top:auto;opacity:.72}
+  .model-stage::after{background:linear-gradient(90deg,#fbfaf8 0%,rgba(251,250,248,.90) 19%,rgba(251,250,248,.40) 42%,transparent 72%)}
+  .model.is-active{opacity:.34}
+  .model--dark.is-active{opacity:.31}
+  .model--female-v.is-active{opacity:.28}
+}
+
+
+    /* FINAL FV reward lock: label above number on every viewport */
+    .proof--single .proof__item{display:flex !important;flex-direction:column !important;align-items:flex-start !important;gap:0 !important;}
+    .proof--single .proof__label:not(.proof__label--lead){order:1 !important;display:block !important;margin:0 0 8px !important;writing-mode:horizontal-tb !important;}
+    .proof--single .proof__number{order:2 !important;display:block !important;margin:0 !important;}
+    @media(max-width:620px){
+      .proof--single .proof__item{display:flex !important;flex-direction:column !important;align-items:flex-start !important;}
+      .proof--single .proof__label:not(.proof__label--lead){order:1 !important;margin:0 0 7px !important;}
+      .proof--single .proof__number{order:2 !important;}
     }
 </style>
 
@@ -1396,7 +1452,75 @@
       .brand__descriptor span{font-size:6.2px;}
       .brand__descriptor small{font-size:5.7px;}
     }
-  </style>
+  
+    /* ===== FV 2026-09-28: support-or-reward positioning ===== */
+    .hero__content{max-width:720px}
+    .hero__title{font-size:clamp(2.5rem,4.55vw,4.65rem);line-height:1.07}
+    .hero__sub{max-width:610px;margin-top:24px}
+    .proof.proof--single{display:block;max-width:470px;padding:17px 0 16px}
+    .proof--single .proof__item{display:flex;align-items:baseline;gap:10px;flex-wrap:nowrap;padding:0}
+    .proof--single .proof__number{order:2;white-space:nowrap}
+    .proof--single .proof__label:not(.proof__label--lead){order:1;margin:0;font-size:.9rem;white-space:nowrap;writing-mode:horizontal-tb}
+    .proof__label--lead{display:none}
+    @media(max-width:620px){
+      .hero__content{transform:translateY(1svh)}
+      .hero__title{font-size:clamp(1.75rem,7.55vw,2.22rem);line-height:1.13}
+      .hero__title .title-line{white-space:nowrap}
+      .hero__sub{max-width:78%;font-size:.8rem;line-height:1.68;margin:16px 0 16px}
+      .proof.proof--single{max-width:100%;padding:12px 4px}
+      .proof--single .proof__item{display:flex;align-items:baseline;gap:8px;flex-wrap:nowrap;padding:0}
+      .proof--single .proof__number{font-size:clamp(2.25rem,11.4vw,3rem);white-space:nowrap}
+      .proof--single .proof__label:not(.proof__label--lead){font-size:.68rem;margin:0;white-space:nowrap;writing-mode:horizontal-tb}
+      .proof__label--lead{display:none}
+      .note{max-width:72%;font-size:.61rem;line-height:1.55}
+    }
+
+    /* FV v3: 還元率を最大120%の上に配置 */
+    .proof.proof--single{
+      display:block;
+      max-width:none;
+      padding:0;
+      margin:30px 0 24px;
+      border:0;
+      background:none;
+    }
+    .proof--single .proof__item{
+      display:block;
+      padding:0;
+    }
+    .proof--single .proof__label:not(.proof__label--lead){
+      display:block;
+      margin:0 0 8px;
+      font-size:.78rem;
+      line-height:1;
+      letter-spacing:.12em;
+      writing-mode:horizontal-tb;
+      white-space:nowrap;
+    }
+    .proof--single .proof__number{
+      display:block;
+      font-size:clamp(3.4rem,6.4vw,6rem);
+      line-height:.9;
+      white-space:nowrap;
+    }
+    @media(max-width:620px){
+      .proof.proof--single{margin:34px 0 24px;padding:0;max-width:100%;}
+      .proof--single .proof__item{display:block;padding:0;}
+      .proof--single .proof__label:not(.proof__label--lead){
+        display:block;
+        margin:0 0 8px;
+        font-size:.68rem;
+        line-height:1;
+        letter-spacing:.12em;
+        writing-mode:horizontal-tb;
+      }
+      .proof--single .proof__number{
+        display:block;
+        font-size:clamp(2.7rem,13vw,3.55rem);
+        line-height:.9;
+      }
+    }
+</style>
 
 </head>
 <body>
@@ -1429,28 +1553,25 @@
         <p class="palmu-label reveal">ライブ配信アプリ「Palmu」所属ライバー募集中</p>
         <p class="eyebrow reveal">GEMARIS STREAMER AGENCY</p>
         <h1 class="hero__title reveal delay-1">
-          <span class="title-line">配信者ファーストを、</span>
-          <span class="title-line accent">条件で証明する。</span>
+          <span class="title-line">あなたに必要なのは、</span>
+          <span class="title-line">マネージャーですか。</span>
+          <span class="title-line accent">報酬ですか。</span>
         </h1>
-        <p class="hero__sub reveal delay-2">「配信者のため」は、条件に表れる。</p>
+        <p class="hero__sub reveal delay-2">必要のないサポートに、<br>あなたの利益を使わない。</p>
 
-        <div class="proof reveal delay-3" aria-label="Gemarisの主な条件">
+        <div class="proof proof--single reveal delay-3" aria-label="Gemarisの報酬還元率">
           <div class="proof__item">
+            <span class="proof__label proof__label--lead">SELF-PRO PLAN</span>
+            <span class="proof__label">還元率</span>
             <strong class="proof__number">最大120%</strong>
-            <span class="proof__label">報酬還元率</span>
-          </div>
-          <div class="proof__divider" aria-hidden="true"></div>
-          <div class="proof__item">
-            <strong class="proof__number">最大39万円</strong>
-            <span class="proof__label">デビュー特典</span>
           </div>
         </div>
-        <p class="note reveal delay-3">※ ラジオ配信はデビュー特典最大19.5万円</p>
+        <p class="note reveal delay-3">必要な人には、機材・制作・マネジメントを。自走できる人には、高還元という選択肢を。</p>
 
         <div class="cta-wrap reveal delay-4">
           <a class="cta" data-ga-event="line_click_fv" href="https://lin.ee/PKv1zts" target="_blank" rel="noopener noreferrer" aria-label="LINEでGemarisの詳細を確認する">
             <span class="cta__icon" aria-hidden="true">LINE</span>
-            <span>LINEで詳細を確認する</span>
+            <span>詳しく見る</span>
             <span class="cta__arrow" aria-hidden="true">→</span>
           </a>
           <span class="cta-help">相談だけでもOK</span>
@@ -1630,6 +1751,33 @@
                 </table>
               </div>
               <p class="keep-note">推奨メータープラン：A＝＋4を1回 / ＋2を2回、B＝＋4を2回、C＝＋6を1回。</p>
+            </div>
+          </details>
+
+          <details class="reward-details rankup-details">
+            <summary>ランクアップに必要なコイン数を見る</summary>
+            <div class="reward-details__body">
+              <div class="reward-table-wrap">
+                <table class="reward-table rankup-table">
+                  <thead><tr><th>ランク</th><th>必要コイン数</th><th>累計</th></tr></thead>
+                  <tbody>
+                    <tr><td class="rank">D → C1</td><td class="reward">600</td><td>600</td></tr>
+                    <tr><td class="rank">C1 → C2</td><td class="reward">4,415</td><td>5,015</td></tr>
+                    <tr><td class="rank">C2 → C3</td><td class="reward">10,793</td><td>15,809</td></tr>
+                    <tr class="is-key"><td class="rank">C3 → B1</td><td class="reward">21,529</td><td>37,338</td></tr>
+                    <tr><td class="rank">B1 → B2</td><td class="reward">49,950</td><td>87,288</td></tr>
+                    <tr><td class="rank">B2 → B3</td><td class="reward">70,650</td><td>157,938</td></tr>
+                    <tr class="is-key"><td class="rank">B3 → A1</td><td class="reward">99,120</td><td>257,058</td></tr>
+                    <tr><td class="rank">A1 → A2</td><td class="reward">148,260</td><td>405,318</td></tr>
+                    <tr><td class="rank">A2 → A3</td><td class="reward">188,400</td><td>593,718</td></tr>
+                    <tr><td class="rank">A3 → A4</td><td class="reward">245,400</td><td>839,118</td></tr>
+                    <tr><td class="rank">A4 → A5</td><td class="reward">297,600</td><td>1,136,718</td></tr>
+                    <tr><td class="rank">A5 → S</td><td class="reward">373,800</td><td>1,510,518</td></tr>
+                    <tr><td class="rank">S → SS</td><td class="reward">546,000</td><td>2,056,518</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="keep-note">※ 累計はDランクから各ランクへ到達するまでに必要なコイン数です。</p>
             </div>
           </details>
         </div>
@@ -1853,12 +2001,6 @@
           gtag('event', this.dataset.gaEvent, {
             link_url: this.href,
             transport_type: 'beacon'
-          });
-        }
-        if (typeof ttq !== 'undefined' && typeof ttq.track === 'function') {
-          ttq.track('Contact', {
-            content_name: this.dataset.gaEvent,
-            content_type: 'LINE'
           });
         }
       });
